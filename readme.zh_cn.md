@@ -56,8 +56,8 @@
 
 ```json
 {
-    maxPayloadSize: 26214400,
-    maxNameSize: 512
+    "maxPayloadSize": 26214400,
+    "maxNameSize": 512
 }
 ```
 
