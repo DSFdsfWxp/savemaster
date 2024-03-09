@@ -1,0 +1,11 @@
+compatibility_flags = [ "nodejs_compat" ]
+name = "cloudsave"
+main = "./worker.js"
+compatibility_date = "2023-12-01"
+workers_dev = false
+route = { pattern = "cloudsave.example.com", custom_domain = false }
+kv_namespaces = [
+  { binding = "db", id = "[Put Your KV Id Here]" }
+]
+[vars]
+key = "[Set Your Server Key Here]"

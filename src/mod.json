@@ -1,0 +1,10 @@
+{
+	"name": "savemaster",
+	"displayName": "saveMaster",
+	"author": "dsfwxp",
+	"description": "A mod that provide you with some ways to manage your saves.",
+	"version": "1.5.0",
+	"hidden": true,
+	"minGameVersion": 136,
+	"repo": "dsfdsfwxp/savemaster"
+}
