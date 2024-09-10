@@ -172,7 +172,7 @@ exports.init = (parents)=>{
     bBackup = saveEditDialog.buttons.button('@saveEdit.backup.hide',()=>{
         showBackup = !showBackup;
         bBackup.setText('@saveEdit.backup.hide');
-        if (showBackup) bBackup.setText('saveEdit.backup.show');
+        if (showBackup) bBackup.setText('@saveEdit.backup.show');
         rebuild();
     }).get();
 
