@@ -72,4 +72,4 @@
 3. 创建一个 kv
 4. 将 kv 绑定到 worker
 5. 为 worker 创建环境变量 `key`，写入访问此服务器的密钥
-6. 将 `/cloud/clous.js` 中的代码粘贴到 worker 中（首先删除 worker 中的所有代码）然后部署
+6. 将 `/cloud/worker.js` 中的代码粘贴到 worker 中（首先删除 worker 中的所有代码）然后部署
