@@ -8,7 +8,7 @@ A Mindustry mod to manage saves. Provides a variety of practical functions.
  
  - Save editor
  - Multiplayer
- - Cloud save (need to build it yourself)
+ - Cloud save (need to build or deploy it yourself)
 
 # Cloud Save
 ## protocol
@@ -52,7 +52,7 @@ Header:
 
  - `key`: the key to access the server
 
-Return:
+Return the limitations of the server (only include `maxPayloadSize` and `maxNameSize`), for example:
 
  ```json
 {
@@ -61,5 +61,15 @@ Return:
 }
 ```
 
+`maxPayloadSize`: max size of the save (byte).  
+`maxNameSize`: max size of the save name (byte).
+
 ## deploy on cloudflare
-Use cloudflare's workers and kv to build a free server.  The code needed is in `/cloud`.  Fill in the subdomain you want to use, the server key you want to set and the ID of your kv in `wrangler.toml` then use cloudflare's `wrangler` to deploy it.
+Use cloudflare's workers and kv to build a free server.  The code needed is in `/cloud`.  
+
+1. Make sure you have a cloudflare account.
+2. Create a worker.
+3. Create a kv.
+4. bind the kv to the worker.
+5. create environment variable `key` for the worker, puting the key to access this server.
+6. Paste code in `/cloud/clous.js` into your worker (Remove all the code in worker first) then deploy.

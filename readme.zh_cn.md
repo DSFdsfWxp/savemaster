@@ -52,7 +52,7 @@
 
 - `key`: 访问服务器的密钥
 
-返回:
+返回服务器限制(仅包含`maxPayloadSize`和`maxNameSize`), 例如:
 
 ```json
 {
@@ -61,5 +61,15 @@
 }
 ```
 
-## 一键部署
-利用cloudflare的worker和kv搭建免费服务器。具体代码在`/cloud`。`wrangler.toml`中填入你想使用的子域，你想设置的服务器密钥和你的kv的id后用cloudflare的`wrangler`部署即可。
+`maxPayloadSize`: 最大存档大小 (字节).  
+`maxNameSize`: 最大存档名称大小 (字节).
+
+## 在 cloudflare 上部署
+使用 cloudflare 的 worker 和 kv 搭建免费服务器. 所需代码位于 `/cloud`
+
+1. 确保您拥有 cloudflare 帐户
+2. 创建一个 worker
+3. 创建一个 kv
+4. 将 kv 绑定到 worker
+5. 为 worker 创建环境变量 `key`，写入访问此服务器的密钥
+6. 将 `/cloud/clous.js` 中的代码粘贴到 worker 中（首先删除 worker 中的所有代码）然后部署
