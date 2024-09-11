@@ -97,7 +97,7 @@ exports.init = ()=>{
     
     cloudSaveDialog.buttons.button("@cloudConfig.clear", Icon.trash, ()=>{
         if (!checkConf()) return;
-        Vars.ui.showConfirm('@cloudConfig.clear.desc',Core.bundle.format('@cloudConfig.clear.comfirm',conf.saveName),()=>{
+        Vars.ui.showConfirm('@cloudConfig.clear.desc',Core.bundle.format('cloudConfig.clear.comfirm',conf.saveName),()=>{
             try{
                 cloud.setConfig(conf);
             }catch(e){

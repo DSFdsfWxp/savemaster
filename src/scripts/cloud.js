@@ -79,7 +79,7 @@ exports.setConfig = (obj)=>{
         }
     }else if (old.saveName != conf.saveName) conf.lastSaveTime = '';
 
-    if (types.getString(conf.saveName).length>limit.maxNameSize){
+    if (types.getString(conf.saveName).length-5>limit.maxNameSize){
         conf = old;
         throw new Error('cloudsave the length of saveName is larger than limit.');
     }
