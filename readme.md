@@ -9,6 +9,13 @@ A Mindustry mod to manage saves. Provides a variety of practical functions.
  - Save editor
  - Multiplayer
  - Cloud save (need to build or deploy it yourself)
+ 
+# How to install
+You need to download the released mod from github manually then import.
+
+# How to use
+You'll find a new option in setting.  
+Then explore by yourself. It's not complex.
 
 # Cloud Save
 ## protocol
