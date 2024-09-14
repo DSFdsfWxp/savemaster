@@ -77,6 +77,6 @@ Use cloudflare's workers and kv to build a free server.  The code needed is in `
 1. Make sure you have a cloudflare account.
 2. Create a worker.
 3. Create a kv.
-4. bind the kv to the worker.
+4. bind the kv to the worker with a variable name `db`.
 5. create environment variable `key` for the worker, puting the key to access this server.
 6. Paste code in `/cloud/worker.js` into your worker (Remove all the code in worker first) then deploy.
