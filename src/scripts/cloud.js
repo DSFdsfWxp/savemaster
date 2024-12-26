@@ -69,6 +69,9 @@ exports.getConfig = ()=>{
 exports.setConfig = (obj)=>{
     let old = JSON.parse(JSON.stringify(conf));
     conf = JSON.parse(JSON.stringify(Object.assign(conf,obj)));;
+
+    if (!conf.serverUrl.startsWith("https://") && !conf.serverUrl.startsWith("http://"))
+        conf.serverUrl = `https://${conf.serverUrl}`;
     
     if (old.serverUrl != conf.serverUrl){
         conf.lastSaveTime = '';

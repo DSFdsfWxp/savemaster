@@ -38,7 +38,6 @@ exports.post = (url,header,body)=>{
     let req = new Packages.arc.util.Http.request(Packages.arc.util.Http.HttpMethod.POST,url);
     req.content = null;
     req.contentStream = content;
-    req.contentLength = new java.lang.Long(body.length);
     req.timeout = 3600000;
     let h = checkUA(header);
     for (let i in h) req.header(i,h[i]);
