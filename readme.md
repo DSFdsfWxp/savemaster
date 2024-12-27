@@ -36,7 +36,7 @@ Use cloudflare's workers and kv to build a free server.  The code needed is in `
 4. Pick a name for you save. Note that different devices with the same save name will use the same cloud save slot (linked to the same cloud save).
 
 ## protocol
-You can also write a server by yourself. Follow this protocol so it can work to this mod.
+You can also write a server by yourself. Follow this protocol so it will work for this mod.
 ### read
 Function: Read save  
 Interface: `/read`  
