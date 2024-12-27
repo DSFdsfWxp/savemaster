@@ -18,7 +18,25 @@
 然后剩下的自行探索. 这并不复杂.
 
 # 云存档
+## 在 cloudflare 上部署
+使用 cloudflare 的 worker 和 kv 搭建免费服务器. 所需代码位于 `/cloud`
+
+1. 确保您拥有 cloudflare 帐户
+2. 创建一个 worker
+3. 创建一个 kv
+4. 将 kv 绑定到 worker, 变量名为`db`
+5. 为 worker 创建环境变量 `key`，写入访问此服务器的密钥 (这里 密钥 ≈ 密码)
+6. 将 `/cloud/worker.js` 中的代码粘贴到 worker 中（首先删除 worker 中的所有代码）然后部署
+
+## 在游戏中配置
+
+1. 设置 -> saveMaster -> 存档管理 -> 云存档选项
+2. 在 `服务器地址` 处粘贴你的 worker 的 url (比如 `example.workers.dev`) (大陆地区可能需要一个域名, 你懂的)
+3. 填入你在部署 worker 时设置的密钥 (环境变量 `key`)
+4. 为你的存档取个名字. 注意在不同设备设置同一存档名称则它们共用一份云存档槽位 (链接到同一份云存档)
+
 ## 协议
+你也可以自己写一个服务端, 只需要实现这套协议即可.
 ### read
 功能: 读取存档  
 接口: `/read`  
@@ -70,13 +88,3 @@
 
 `maxPayloadSize`: 最大存档大小 (字节).  
 `maxNameSize`: 最大存档名称大小 (字节).
-
-## 在 cloudflare 上部署
-使用 cloudflare 的 worker 和 kv 搭建免费服务器. 所需代码位于 `/cloud`
-
-1. 确保您拥有 cloudflare 帐户
-2. 创建一个 worker
-3. 创建一个 kv
-4. 将 kv 绑定到 worker, 变量名为`db`
-5. 为 worker 创建环境变量 `key`，写入访问此服务器的密钥
-6. 将 `/cloud/worker.js` 中的代码粘贴到 worker 中（首先删除 worker 中的所有代码）然后部署

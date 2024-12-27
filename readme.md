@@ -8,7 +8,7 @@ A Mindustry mod to manage saves. Provides a variety of practical functions.
  
  - Save editor
  - Multiplayer
- - Cloud save (need to build or deploy it yourself)
+ - Cloud save (need to deploy it by yourself)
  
 # How to install
 You need to download the released mod from github manually then import.
@@ -18,7 +18,25 @@ You'll find a new option in setting.
 Then explore by yourself. It's not complex.
 
 # Cloud Save
+## deploy on cloudflare
+Use cloudflare's workers and kv to build a free server.  The code needed is in `/cloud`.  
+
+1. Make sure you have a cloudflare account.
+2. Create a worker.
+3. Create a kv.
+4. Bind the kv to the worker with a variable name `db`.
+5. Create environment variable `key` for the worker, puting the key to access this server (key ≈ password here).
+6. Paste code in `/cloud/worker.js` into your worker (Remove all the code in worker first) then deploy.
+
+## config in game
+
+1. Settings -> saveMaster -> Saves Manager -> Cloud Save Option
+2. Paste the url of your worker to `Server Address` (e.g. `example.workers.dev`)
+3. Input the key you set in your worker. (environment variable `key`)
+4. Pick a name for you save. Note that different devices with the same save name will use the same cloud save slot (linked to the same cloud save).
+
 ## protocol
+You can also write a server by yourself. Follow this protocol so it can work to this mod.
 ### read
 Function: Read save  
 Interface: `/read`  
@@ -70,13 +88,3 @@ Return the limitations of the server (only include `maxPayloadSize` and `maxName
 
 `maxPayloadSize`: max size of the save (byte).  
 `maxNameSize`: max size of the save name (byte).
-
-## deploy on cloudflare
-Use cloudflare's workers and kv to build a free server.  The code needed is in `/cloud`.  
-
-1. Make sure you have a cloudflare account.
-2. Create a worker.
-3. Create a kv.
-4. bind the kv to the worker with a variable name `db`.
-5. create environment variable `key` for the worker, puting the key to access this server.
-6. Paste code in `/cloud/worker.js` into your worker (Remove all the code in worker first) then deploy.
