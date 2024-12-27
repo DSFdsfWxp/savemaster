@@ -35,6 +35,7 @@ Use cloudflare's workers and kv to build a free server.  The code needed is in `
 3. Input the key you set in your worker. (environment variable `key`)
 4. Pick a name for you save. Note that different devices with the same save name will use the same cloud save slot (linked to the same cloud save).
 5. Enable the cloud save (it's enabled when it shows `CloudSave: Enable`)
+6. Save the config
 
 ## protocol
 You can also write a server by yourself. Follow this protocol so it will work for this mod.
