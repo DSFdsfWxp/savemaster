@@ -1,10 +1,17 @@
-# 使用fastapi完成的适合本模组的服务端
+# worker.js
+## 使用 cloudflare worker 部署的服务端
+免费的服务端实现。
+
+使用方法见[readme](../readme.md)。
+
+# local.py
+## 使用fastapi完成的适合本模组的服务端
 
 ##### 如何使用：
-
+```bash
 pip install fastapi uvicorn
-
 python local.py
+```
 
 程序会默认开放于本地的8235端口，使用http协议访问。
 
@@ -16,10 +23,12 @@ python local.py
 
 程序会在local.py所在位置创建save文件夹，存档以二进制文件保存在此。
 
+```txt
 /save
   └─ [存档名称]
       ├─ [存档名称].save  # 实际文件
       └─ time.txt        # 时间戳记录
+```
 
 ##### 注意事项：
 
