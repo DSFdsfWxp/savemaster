@@ -193,6 +193,7 @@ exports.init = (parents)=>{
         }else{
             //saveEditDialog.hide();
         }
+        editor.reset();
     });
     
 };

@@ -61,88 +61,91 @@ exports.init = ()=>{
     save.init();
     conf = cloud.getConfig();
 
-    cloudSaveDialog.buttons.defaults().size(cloudSaveDialog.width, 64);
-    cloudSaveDialog.buttons.button('@back',Icon.left,()=>{
-        cloudSaveDialog.hide();
-    });
-    cloudSaveDialog.buttons.button("@cloudConfig.save", Icon.save, ()=>{
-        try{
-            cloud.setConfig(conf);
-            confModified = false;
-            Vars.ui.showOkText('@tip','@cloudConfig.save.success',()=>{});
-        }catch(e){
-            Vars.ui.showOkText('@error','@cloudConfig.warn.saveNameTooLong',()=>{});
-            return;
-        }
-    });
-    cloudSaveDialog.buttons.button("@cloudConfig.test", Icon.play, ()=>{
-        if (cloud.test(conf)){
-            Vars.ui.showOkText('@cloudConfig.test','@cloudConfig.test.success',()=>{});
-        }else{
-            Vars.ui.showOkText('@cloudConfig.test','@cloudConfig.test.fail',()=>{});
-        }
-    });
-    
-    let checkConf = ()=>{
-        if (!cloud.isEnable()) {
-            Vars.ui.showOkText('@error','@cloudConfig.warn.cloudSaveIsDisabled',()=>{});
-            return false;
-        }
-        if (confModified) {
-            Vars.ui.showOkText('@error','@cloudConfig.warn.saveConfigFirst',()=>{});
-            return false;
-        }
-        return true;
-    };
-    
-    cloudSaveDialog.buttons.button("@cloudConfig.clear", Icon.trash, ()=>{
-        if (!checkConf()) return;
-        Vars.ui.showConfirm('@cloudConfig.clear.desc',Core.bundle.format('cloudConfig.clear.comfirm',conf.saveName),()=>{
+    cloudSaveDialog.buttons.pane(buttons=>{
+        buttons.defaults().pad(3).height(64);
+        
+        buttons.button('@back',Icon.left,()=>{
+            cloudSaveDialog.hide();
+        });
+        buttons.button("@cloudConfig.save", Icon.save, ()=>{
             try{
                 cloud.setConfig(conf);
+                confModified = false;
+                Vars.ui.showOkText('@tip','@cloudConfig.save.success',()=>{});
             }catch(e){
                 Vars.ui.showOkText('@error','@cloudConfig.warn.saveNameTooLong',()=>{});
                 return;
             }
-            try{
-                cloud.removeSave();
-            }catch(e){
-                Vars.ui.showOkText('@error',e.toString(),()=>{});
-                return;
+        });
+        buttons.button("@cloudConfig.test", Icon.play, ()=>{
+            if (cloud.test(conf)){
+                Vars.ui.showOkText('@cloudConfig.test','@cloudConfig.test.success',()=>{});
+            }else{
+                Vars.ui.showOkText('@cloudConfig.test','@cloudConfig.test.fail',()=>{});
             }
-            Vars.ui.showOkText('@cloudConfig.clear.desc','@cloudConfig.clear.done',()=>{});
         });
-    });
-    cloudSaveDialog.buttons.button("@cloudConfig.upload", Icon.upload, ()=>{
-        if (!checkConf()) return;
-        Vars.ui.showConfirm("@cloudSave.title","@cloudSave.syncToComfirm",()=>{
-            Vars.ui.loadAnd('@cloudSave.syncingTo',()=>{
+        
+        let checkConf = ()=>{
+            if (!cloud.isEnable()) {
+                Vars.ui.showOkText('@error','@cloudConfig.warn.cloudSaveIsDisabled',()=>{});
+                return false;
+            }
+            if (confModified) {
+                Vars.ui.showOkText('@error','@cloudConfig.warn.saveConfigFirst',()=>{});
+                return false;
+            }
+            return true;
+        };
+        
+        buttons.button("@cloudConfig.clear", Icon.trash, ()=>{
+            if (!checkConf()) return;
+            Vars.ui.showConfirm('@cloudConfig.clear.desc',Core.bundle.format('cloudConfig.clear.comfirm',conf.saveName),()=>{
                 try{
-                    cloud.init();
-                    cloud.writeSave(save.make('cloudsave'));
+                    cloud.setConfig(conf);
                 }catch(e){
-                    print(e);
-                    Vars.ui.showOkText('@error',Core.bundle.get('cloudSave.syncToFail')+e.toString(),()=>{});
+                    Vars.ui.showOkText('@error','@cloudConfig.warn.saveNameTooLong',()=>{});
+                    return;
                 }
+                try{
+                    cloud.removeSave();
+                }catch(e){
+                    Vars.ui.showOkText('@error',e.toString(),()=>{});
+                    return;
+                }
+                Vars.ui.showOkText('@cloudConfig.clear.desc','@cloudConfig.clear.done',()=>{});
             });
         });
-    });
-    cloudSaveDialog.buttons.button("@cloudConfig.download", Icon.download, ()=>{
-        if (!checkConf()) return;
-        Vars.ui.showConfirm("@cloudSave.title","@cloudSave.syncFromComfirm",()=>{
-            Vars.ui.loadAnd('@cloudSave.syncingFrom',()=>{
-                try{
-                    cloud.init();
-                    let obj = cloud.getSave();
-                    if (obj!=null) obj.readFiles();
-                    if (obj!=null) obj.apply();
-                }catch(e){
-                    print(e);
-                    Vars.ui.showOkText('@error',Core.bundle.get('cloudSave.syncFromFail')+e.toString(),()=>{});
-                }
+        buttons.button("@cloudConfig.upload", Icon.upload, ()=>{
+            if (!checkConf()) return;
+            Vars.ui.showConfirm("@cloudSave.title","@cloudSave.syncToComfirm",()=>{
+                Vars.ui.loadAnd('@cloudSave.syncingTo',()=>{
+                    try{
+                        cloud.init();
+                        cloud.writeSave(save.make('cloudsave'));
+                    }catch(e){
+                        print(e);
+                        Vars.ui.showOkText('@error',Core.bundle.get('cloudSave.syncToFail')+e.toString(),()=>{});
+                    }
+                });
             });
         });
-    });
+        buttons.button("@cloudConfig.download", Icon.download, ()=>{
+            if (!checkConf()) return;
+            Vars.ui.showConfirm("@cloudSave.title","@cloudSave.syncFromComfirm",()=>{
+                Vars.ui.loadAnd('@cloudSave.syncingFrom',()=>{
+                    try{
+                        cloud.init();
+                        let obj = cloud.getSave();
+                        if (obj!=null) obj.readFiles();
+                        if (obj!=null) obj.apply();
+                    }catch(e){
+                        print(e);
+                        Vars.ui.showOkText('@error',Core.bundle.get('cloudSave.syncFromFail')+e.toString(),()=>{});
+                    }
+                });
+            });
+        });
+    }).fillX().height(70);
     cloudSaveDialog.addCloseListener();
     cloudSaveDialog.shown(rebuild);
 };

@@ -6,7 +6,7 @@ const control = require('savemaster/game/control');
 const ui = require('savemaster/game/ui');
 
 var currentPlayer = {
-    name: '默认玩家',
+    name: Core.bundle.get("multiplayer.defaultPlayer"),
     save: {
         name: null,
         path: null
@@ -14,11 +14,10 @@ var currentPlayer = {
 };
 
 var conf = {
-    currentName: '默认玩家',
-    player: {
-        '默认玩家': currentPlayer
-    }
+    currentName: Core.bundle.get("multiplayer.defaultPlayer"),
+    player: {}
 };
+conf.player[Core.bundle.get("multiplayer.defaultPlayer")] = currentPlayer;
 
 function checkExist(obj){
     return (typeof conf.player[obj.name] != 'undefined');

@@ -109,6 +109,13 @@ exports.on = (name,f)=>{
     }
 };
 
+exports.reset = ()=>{
+    editing = false;
+    checkingEdit = false;
+    uiShown = false;
+    currentName = '';
+};
+
 // this don't need to init whole module
 exports.removeFiles = ()=>{
     if (!config.isInited()) config.init();
