@@ -1,39 +1,42 @@
-# worker.js
-## 使用 cloudflare worker 部署的服务端
-免费的服务端实现。
+**English** | [简体中文](./readme.zh_cn.md)
 
-使用方法见[readme](../readme.md)。
+# worker.js
+## A server deployed with a Cloudflare Worker
+The free server implementation.
+
+See [readme](../readme.md) for how to deploy and use it.
 
 # local.py
-## 使用fastapi完成的适合本模组的服务端
+## A server for this mod, written with FastAPI
 
-##### 如何使用：
+### How to use
+
 ```bash
 pip install fastapi uvicorn
 python local.py
 ```
 
-程序会默认开放于本地的8235端口，使用http协议访问。
+It serves over http on local port 8235 by default.
 
-##### 配置参数:
+### Configuration
 
-可以在local.py文件开头更改密钥和端口。
+The key and the port can be changed at the top of `local.py`.
 
-默认使用safekey =  “dinocekey”  port = 8235
+The defaults are `safekey = "dinocekey"` and `port = 8235`.
 
-程序会在local.py所在位置创建save文件夹，存档以二进制文件保存在此。
+The program creates a `save` folder in the directory you run it from and keeps the saves there as binary files.
 
 ```txt
 /save
-  └─ [存档名称]
-      ├─ [存档名称].save  # 实际文件
-      └─ time.txt        # 时间戳记录
+  └─ [save name]
+      ├─ [save name].save  # the actual file
+      └─ time.txt          # the recorded timestamp
 ```
 
-##### 注意事项：
+### Notes
 
-如果你希望跨平台，跨设备使用云存档，设置相同的存档名称即可，但是即使使用相同的存档名称，对于从未上传过存档的设备，或是你刚刚更改完云存档设置的任何内容，必须要首先上传一次存档，从未上传过存档的游戏下载存档会失败。如果你需要和我一样在多个设备上游玩，第一次使用云存档之前，你仍然需要使用游戏自带的功能转移游戏数据，然后上传一次存档，此后就可以正常使用云存档功能了。
+If you want to use cloud save across platforms and devices, just give them the same save name. Even then, a device that has never uploaded a save, or a device whose cloud save settings you have just changed, has to upload once first: a download on a device that has never uploaded fails. If you play on several devices, transfer your game data with the game's own function before you use cloud save for the first time, upload once, and cloud save works normally from then on.
 
-##### Todo：
+### Todo
 
-对于从未上传过存档的客户端，同步存档的时候会出现”Too much data for declared Content-Length“错误，尚不明确为什么会有这个问题，有时间再做吧。
+For a client that has never uploaded a save, syncing may fail with a `Too much data for declared Content-Length` error. Why it happens is still unclear; it will be looked into when there is time.

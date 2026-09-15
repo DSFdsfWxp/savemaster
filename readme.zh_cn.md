@@ -81,7 +81,7 @@
 
 这套实现允许 25 MiB 的存档与 512 字节的存档名称, 想要别的数字就改 `worker.js` 里的 `limit`.
 
-`/cloud/local.py` 是一个基于 FastAPI 的小服务端, 可以在你自己的机器上运行, 详见 [cloud/readme.md](./cloud/readme.md).
+`/cloud/local.py` 是一个基于 FastAPI 的小服务端, 可以在你自己的机器上运行, 详见 [cloud/readme.zh_cn.md](./cloud/readme.zh_cn.md).
 
 ### 在游戏中配置
 
