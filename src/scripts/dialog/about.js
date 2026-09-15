@@ -23,7 +23,7 @@ exports.init = ()=>{
 
     aboutDialog.cont.row();
 
-    aboutDialog.cont.add('[accent]saveMaster');
+    aboutDialog.cont.add('[accent]SaveMaster');
     aboutDialog.cont.row();
     aboutDialog.cont.add('@about.version');
     aboutDialog.cont.row();

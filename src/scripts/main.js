@@ -6,12 +6,12 @@ const ui = require('savemaster/game/ui');
 const editor = require('savemaster/game/editor');
 const control = require('savemaster/game/control');
 
-print('saveMaster v'+version.major.toString()+'.'+version.minor.toString()+'.'+version.bugFix.toString());
+print('SaveMaster v'+version.major.toString()+'.'+version.minor.toString()+'.'+version.bugFix.toString());
 
 Events.on(ClientLoadEvent,()=>{
     editor.removeFiles();
     Time.run(10,()=>{
-        print('saveMaster init begin');
+        print('SaveMaster init begin');
         ui.register();
         save.init();
         control.onCampaignQuit(()=>{
@@ -48,6 +48,6 @@ Events.on(ClientLoadEvent,()=>{
                 });
             });
         }
-        print('saveMaster init end');
+        print('SaveMaster init end');
     });
 });

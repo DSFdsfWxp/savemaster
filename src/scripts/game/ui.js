@@ -8,7 +8,7 @@ exports.register = ()=>{
     playerDialog.init();
     aboutDialog.init();
 
-    Vars.ui.settings.addCategory('saveMaster',Icon.save,(t)=>{
+    Vars.ui.settings.addCategory('SaveMaster',Icon.save,(t)=>{
 
         t.button('@menu.saveMgr',()=>{
             mainDialog.dialog.show();

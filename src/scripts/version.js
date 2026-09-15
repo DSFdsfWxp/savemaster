@@ -1,7 +1,7 @@
 
-const version = [1,5,3];
+const version = [1,5,4];
 
-const changeLog = "1. 优化翻译\n2. 让云存档设置按钮可横向滚动\n3. 修复存档编辑列表页面被异常触发的问题\n\n1. Optimized translations\n2. Made the cloud save settings buttons horizontally scrollable\n3. Fixed an issue where the save editing list page was unexpectedly triggered";
+const changeLog = "本版本只更新文档, 模组功能没有变化.\n\n1. 重写并扩充了中英文 readme\n2. 补充协议、存档文件格式与目录结构说明\n3. 扩充模组描述并统一语言切换样式\n\nThis release only updates documentation; the mod itself is unchanged.\n\n1. Rewrote and expanded both readmes\n2. Documented the protocol, save file format and folders\n3. Expanded the mod description and unified the language selector";
 
 exports.major = version[0];
 exports.minor = version[1];

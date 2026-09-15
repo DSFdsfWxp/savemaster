@@ -3,7 +3,7 @@ const page=`
 <!DOCTYPE html>
 <html>
   <body>
-    <h1>savesMaster CloudSaves Server</h1>
+    <h1>SaveMaster CloudSaves Server</h1>
     <h4>v1.0.0</h4>
     <p>403 Forbidden</p>
   </body>
