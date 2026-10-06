@@ -86,7 +86,7 @@ That implementation allows a 25 MiB save and a 512 byte save name; change the `l
 ### config in game
 
  1. Settings -> SaveMaster -> Saves Manager -> Cloud Save Option
- 2. Paste the url of your worker to `Server Address` (e.g. `example.workers.dev`); `https://` is added for you if you leave it out. In mainland China `*.workers.dev` may not be reachable, and binding your own domain may be needed.
+ 2. Paste the url of your worker to `Server Address` (e.g. `example.workers.dev`); `https://` is added for you if you leave it out. 
  3. Input the key you set in your worker. (environment variable `key`)
  4. Pick a name for you save. Note that different devices with the same save name will use the same cloud save slot (linked to the same cloud save).
  5. Enable the cloud save (it's enabled when it shows `CloudSave: Enable`)
