@@ -2,7 +2,7 @@
 	"name": "savemaster",
 	"displayName": "SaveMaster",
 	"author": "dsfwxp",
-	"description": "A plugin mod for Mindustry that gives you more control over your saves: back up and restore a whole save (maps, schematics and progress settings included), edit the maps inside a save or a backup without leaving the game, keep several independent players on one device, and sync a save between devices with a cloud save server you host yourself. It adds no game content and does not affect net multiplayer. More details in the GitHub repo.",
+ "description": "A plugin mod for Mindustry that gives you more control over your saves: back up and restore a whole save (maps, schematics and progress settings included), edit the maps inside a save or a backup without leaving the game, keep several independent players on one device, and sync a save between devices with a cloud save server you host yourself. It adds no game content and does not affect net multiplayer. More details in the GitHub repo. Note that you should download the mod from Github release and manually import it. ",
 	"version": "1.5.4",
 	"hidden": true,
 	"minGameVersion": 136,
